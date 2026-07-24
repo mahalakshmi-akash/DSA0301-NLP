@@ -1,12 +1,22 @@
-import nltk
+sentence = "The quick brown fox jumps over the lazy dog"
 
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
+words = sentence.split()
 
-text = "The quick brown fox jumps over the lazy dog."
+print("Word\t\tPOS Tag")
+print("------------------------")
 
-words = nltk.word_tokenize(text)
+for word in words:
+    if word.lower() in ["the", "a", "an"]:
+        tag = "DT (Determiner)"
+    elif word.lower() in ["over", "in", "on", "at", "under"]:
+        tag = "IN (Preposition)"
+    elif word.endswith("ing"):
+        tag = "VBG (Verb)"
+    elif word.lower() in ["jumps", "runs", "plays"]:
+        tag = "VBZ (Verb)"
+    elif word.lower() in ["quick", "brown", "lazy"]:
+        tag = "JJ (Adjective)"
+    else:
+        tag = "NN (Noun)"
 
-tags = nltk.pos_tag(words)
-
-print(tags)
+    print(word, "\t\t", tag)
