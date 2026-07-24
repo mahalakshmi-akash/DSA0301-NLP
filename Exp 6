@@ -1,0 +1,30 @@
+import random
+
+text = "Artificial Intelligence changes the world Artificial Intelligence improves healthcare Machine Learning changes industries"
+
+words = text.split()
+
+bigrams = {}
+
+for i in range(len(words) - 1):
+    key = words[i]
+    value = words[i + 1]
+
+    if key not in bigrams:
+        bigrams[key] = []
+
+    bigrams[key].append(value)
+
+current = "Artificial"
+
+sentence = [current]
+
+for _ in range(10):
+    if current in bigrams:
+        current = random.choice(bigrams[current])
+        sentence.append(current)
+    else:
+        break
+
+print("Generated Text:")
+print(" ".join(sentence))
