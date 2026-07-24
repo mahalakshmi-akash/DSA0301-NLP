@@ -1,0 +1,22 @@
+sentence = [
+    ("The", "DT"),
+    ("cat", "NN"),
+    ("is", "NN"),
+    ("running", "NN")
+]
+
+print("Before Transformation:")
+print(sentence)
+
+transformed = []
+
+for word, tag in sentence:
+    if word.endswith("ing"):
+        tag = "VBG"
+    elif word == "is":
+        tag = "VBZ"
+
+    transformed.append((word, tag))
+
+print("\nAfter Transformation:")
+print(transformed)
