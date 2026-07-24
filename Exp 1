@@ -1,0 +1,10 @@
+import re
+
+text = "My email is student@gmail.com and phone number is 9876543210."
+
+email = re.findall(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', text)
+phone = re.findall(r'\d{10}', text)
+
+print("Text:", text)
+print("Email:", email)
+print("Phone:", phone)
