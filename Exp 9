@@ -1,0 +1,21 @@
+import nltk
+from nltk.tag import RegexpTagger
+
+patterns = [
+    (r'.*ing$', 'VBG'),
+    (r'.*ed$', 'VBD'),
+    (r'.*es$', 'VBZ'),
+    (r'.*ould$', 'MD'),
+    (r'.*\'s$', 'NN$'),
+    (r'.*s$', 'NNS'),
+    (r'^[0-9]+$', 'CD'),
+    (r'.*', 'NN')
+]
+
+tagger = RegexpTagger(patterns)
+
+sentence = "The boys are playing football"
+
+words = sentence.split()
+
+print(tagger.tag(words))
