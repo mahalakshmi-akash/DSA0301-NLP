@@ -1,0 +1,18 @@
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+
+nltk.download('punkt')
+
+text = "The boys are playing happily in the playground."
+
+words = word_tokenize(text)
+
+stemmer = PorterStemmer()
+
+print("Original Words:")
+print(words)
+
+print("\nStemmed Words:")
+for word in words:
+    print(word, "->", stemmer.stem(word))
