@@ -1,0 +1,10 @@
+import nltk
+from nltk.stem import PorterStemmer
+
+stemmer = PorterStemmer()
+
+words = ["running", "playing", "studies", "happiness", "flies"]
+
+print("Word\tStem")
+for word in words:
+    print(word, "\t", stemmer.stem(word))
