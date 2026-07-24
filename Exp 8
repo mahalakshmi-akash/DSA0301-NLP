@@ -1,0 +1,13 @@
+import random
+
+words = ["I", "play", "football"]
+
+possible_tags = {
+    "I": ["PRP"],
+    "play": ["VB", "NN"],
+    "football": ["NN"]
+}
+
+for word in words:
+    tag = random.choice(possible_tags[word])
+    print(word, "->", tag)
