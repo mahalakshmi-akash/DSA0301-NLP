@@ -1,0 +1,44 @@
+from collections import Counter
+
+# Dataset
+corpus = [
+    "Students learn NLP",
+    "Students learn Python",
+    "Students write code",
+    "Teachers teach NLP",
+    "Teachers teach Python"
+]
+
+# Create bigrams
+bigrams = []
+first_words = []
+
+for sentence in corpus:
+    words = sentence.split()
+    first_words.extend(words[:-1])          # First word of each bigram
+    for i in range(len(words)-1):
+        bigrams.append((words[i], words[i+1]))
+
+# Count frequencies
+bigram_count = Counter(bigrams)
+word_count = Counter(first_words)
+
+# Vocabulary size
+vocab = set()
+for sentence in corpus:
+    vocab.update(sentence.split())
+V = len(vocab)
+
+print("Bigram Count")
+for bg, count in bigram_count.items():
+    print(bg, "=", count)
+
+print("\nMLE Probabilities")
+for bg, count in bigram_count.items():
+    p = count / word_count[bg[0]]
+    print(f"P({bg[1]}|{bg[0]}) = {p:.2f}")
+
+print("\nLaplace Probabilities")
+for bg, count in bigram_count.items():
+    p = (count + 1) / (word_count[bg[0]] + V)
+    print(f"P({bg[1]}|{bg[0]}) = {p:.2f}")
